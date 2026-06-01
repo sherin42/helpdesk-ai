@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+    {% if dashboard_type == 'admin' %}
+
+        {% include 'accounts/dashboard/admin_dashboard.html' %}
+
+    {% elif dashboard_type == 'staff' %}
+
+        {% include 'accounts/dashboard/staff_dashboard.html' %}
+
+    {% else %}
+
+        {% include 'accounts/dashboard/user_dashboard.html' %}
+
+    {% endif %}
+
+{% endblock %}

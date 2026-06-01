@@ -1,0 +1,190 @@
+<div class="container-fluid">
+
+    <!-- HEADER -->
+    <div class="d-flex justify-content-between align-items-center mb-4">
+
+        <div>
+
+            <h2 class="fw-bold mb-1">
+                My Support Dashboard
+            </h2>
+
+            <p class="text-muted mb-0">
+                Track your submitted support tickets
+            </p>
+
+        </div>
+
+    </div>
+
+    <!-- KPI -->
+    <div class="row g-4 mb-4">
+
+        <div class="col-md-3">
+
+            <div class="card border-0 shadow-sm rounded-4">
+
+                <div class="card-body">
+
+                    <p class="text-muted mb-2">
+                        Total Tickets
+                    </p>
+
+                    <h2 class="fw-bold">
+                        {{ total_tickets }}
+                    </h2>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <div class="col-md-3">
+
+            <div class="card border-0 shadow-sm rounded-4">
+
+                <div class="card-body">
+
+                    <p class="text-muted mb-2">
+                        Open
+                    </p>
+
+                    <h2 class="fw-bold text-warning">
+                        {{ open_tickets }}
+                    </h2>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <div class="col-md-3">
+
+            <div class="card border-0 shadow-sm rounded-4">
+
+                <div class="card-body">
+
+                    <p class="text-muted mb-2">
+                        In Progress
+                    </p>
+
+                    <h2 class="fw-bold text-primary">
+                        {{ in_progress_tickets }}
+                    </h2>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <div class="col-md-3">
+
+            <div class="card border-0 shadow-sm rounded-4">
+
+                <div class="card-body">
+
+                    <p class="text-muted mb-2">
+                        Resolved
+                    </p>
+
+                    <h2 class="fw-bold text-success">
+                        {{ resolved_tickets }}
+                    </h2>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <!-- RECENT -->
+    <div class="card border-0 shadow-sm rounded-4">
+
+        <div class="card-body">
+
+            <div class="d-flex justify-content-between align-items-center mb-4">
+
+                <h5 class="fw-bold mb-0">
+                    Recent Tickets
+                </h5>
+
+                <a href="{% url 'ticket_list' %}"
+                   class="btn btn-primary btn-sm">
+
+                    View All
+
+                </a>
+
+            </div>
+
+            <div class="table-responsive">
+
+                <table class="table align-middle">
+
+                    <thead>
+
+                        <tr>
+
+                            <th>Title</th>
+                            <th>Department</th>
+                            <th>Priority</th>
+                            <th>Status</th>
+
+                        </tr>
+
+                    </thead>
+
+                    <tbody>
+
+                        {% for ticket in recent_tickets %}
+
+                        <tr>
+
+                            <td>
+                                {{ ticket.title }}
+                            </td>
+
+                            <td>
+                                {{ ticket.department }}
+                            </td>
+
+                            <td>
+
+                                <span class="badge bg-warning">
+
+                                    {{ ticket.priority }}
+
+                                </span>
+
+                            </td>
+
+                            <td>
+
+                                <span class="badge bg-primary">
+
+                                    {{ ticket.status }}
+
+                                </span>
+
+                            </td>
+
+                        </tr>
+
+                        {% endfor %}
+
+                    </tbody>
+
+                </table>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>

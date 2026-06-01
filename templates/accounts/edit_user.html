@@ -1,0 +1,154 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div class="row justify-content-center">
+
+    <div class="col-md-8">
+
+        <div class="card shadow-sm">
+
+            <div class="card-body">
+
+                <h2 class="text-center mb-4">
+                    Edit User
+                </h2>
+
+                <form method="POST">
+
+                    {% csrf_token %}
+
+                    <!-- NAME -->
+                    <div class="mb-3">
+
+                        <label class="form-label">
+                            Name
+                        </label>
+
+                        {{ form.name }}
+
+                    </div>
+
+                    <!-- USERNAME -->
+                    <div class="mb-3">
+
+                        <label class="form-label">
+                            Username
+                        </label>
+
+                        {{ form.username }}
+
+                    </div>
+
+                    <!-- EMAIL -->
+                    <div class="mb-3">
+
+                        <label class="form-label">
+                            Email
+                        </label>
+
+                        {{ form.email }}
+
+                    </div>
+
+                    <!-- ROLE -->
+                    <div class="mb-3">
+
+                        <label class="form-label">
+                            Role
+                        </label>
+
+                        {{ form.role }}
+
+                    </div>
+
+                    <!-- DEPARTMENT -->
+                    {% if form.instance.role == 'staff' %}
+
+                        <div class="mb-3">
+
+                            <label class="form-label">
+                                Department
+                            </label>
+
+                            {{ form.department }}
+
+                        </div>
+
+                    {% endif %}
+
+                    <!-- LOCATION -->
+                    {% if form.instance.role == 'user' %}
+
+                        <div class="mb-3">
+
+                            <label class="form-label">
+                                Location
+                            </label>
+
+                            {{ form.location }}
+
+                        </div>
+
+                    {% endif %}
+
+                    <!-- AGE -->
+                    {% if user.role == 'user' %}
+
+                        <div class="mb-3">
+
+                            <label class="form-label">
+                                Age
+                            </label>
+
+                            {{ form.age }}
+
+                        </div>
+
+                    {% endif %}
+
+                    <!-- GENDER -->
+                    {% if user.role == 'user' %}
+
+                        <div class="mb-3">
+
+                            <label class="form-label">
+                                Gender
+                            </label>
+
+                            {{ form.gender }}
+
+                        </div>
+
+                    {% endif %}
+
+                    <!-- BUTTONS -->
+                    <div class="d-flex justify-content-between">
+
+                        <button type="submit"
+                                class="btn btn-primary">
+
+                            Save Changes
+
+                        </button>
+
+                        <a href="{% url 'user_list' %}"
+                           class="btn btn-secondary">
+
+                            Back
+
+                        </a>
+
+                    </div>
+
+                </form>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+{% endblock %}

@@ -1,0 +1,353 @@
+{% extends 'base.html' %}
+
+{% block content_public %}
+
+<div class="container py-5">
+
+    <!-- HERO SECTION -->
+    <section class="py-5">
+
+        <div class="row align-items-center">
+
+            <!-- LEFT -->
+            <div class="col-lg-6">
+
+                <h1 class="display-4 fw-bold mb-4">
+
+                    Modern Customer Support &
+                    Ticket Escalation Platform
+
+                </h1>
+
+                <p class="lead text-muted mb-4">
+
+                    Manage support tickets, assign departments,
+                    monitor escalations, and improve customer
+                    satisfaction with a powerful centralized system.
+
+                </p>
+
+                <div class="d-flex gap-3 flex-wrap">
+
+                    {% if not user.is_authenticated %}
+
+                        <a href="{% url 'login' %}"
+                        class="btn btn-primary btn-lg px-4">
+
+                            Get Started
+
+                        </a>
+
+                        <a href="{% url 'register' %}"
+                        class="btn btn-outline-dark btn-lg px-4">
+
+                            Create Account
+
+                        </a>
+
+                    {% else %}
+
+                        <a href="{% url 'dashboard' %}"
+                        class="btn btn-success btn-lg px-4">
+
+                            Open Dashboard
+
+                        </a>
+
+                    {% endif %}
+
+                </div>
+
+                <!-- TRUST -->
+                <div class="d-flex gap-5 mt-5 flex-wrap">
+
+                    <div>
+
+                        <h3 class="fw-bold text-primary">
+                            99.9%
+                        </h3>
+
+                        <p class="text-muted mb-0">
+                            System Reliability
+                        </p>
+
+                    </div>
+
+                    <div>
+
+                        <h3 class="fw-bold text-success">
+                            Fast
+                        </h3>
+
+                        <p class="text-muted mb-0">
+                            Ticket Resolution
+                        </p>
+
+                    </div>
+
+                    <div>
+
+                        <h3 class="fw-bold text-warning">
+                            Secure
+                        </h3>
+
+                        <p class="text-muted mb-0">
+                            Role-Based Access
+                        </p>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+            <!-- RIGHT -->
+    <div class="col-lg-6 mt-5 mt-lg-0">
+
+        <div class="text-center">
+
+            <img src="https://cdn-icons-png.flaticon.com/512/9068/9068756.png"
+                class="img-fluid"
+                style="max-height: 420px;">
+
+        </div>
+
+    </div>
+
+        </div>
+
+    </section>
+
+    <!-- FEATURES -->
+    <section class="py-5">
+
+        <div class="text-center mb-5">
+
+            <h2 class="fw-bold">
+
+                Powerful Features
+
+            </h2>
+
+            <p class="text-muted">
+
+                Designed for modern customer support teams
+
+            </p>
+
+        </div>
+
+        <div class="row g-4">
+
+            <!-- FEATURE -->
+            <div class="col-md-4">
+
+                <div class="card border-0 shadow-sm h-100 rounded-4">
+
+                    <div class="card-body p-4">
+
+                        <div class="display-6 mb-3">
+                            🎫
+                        </div>
+
+                        <h4 class="fw-bold mb-3">
+
+                            Smart Ticketing
+
+                        </h4>
+
+                        <p class="text-muted mb-0">
+
+                            Create and organize support tickets
+                            with department, priority, and status management.
+
+                        </p>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+            <!-- FEATURE -->
+            <div class="col-md-4">
+
+                <div class="card border-0 shadow-sm h-100 rounded-4">
+
+                    <div class="card-body p-4">
+
+                        <div class="display-6 mb-3">
+                            ⚡
+                        </div>
+
+                        <h4 class="fw-bold mb-3">
+
+                            Escalation Workflow
+
+                        </h4>
+
+                        <p class="text-muted mb-0">
+
+                            Escalate critical issues instantly
+                            and maintain complete action history tracking.
+
+                        </p>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+            <!-- FEATURE -->
+            <div class="col-md-4">
+
+                <div class="card border-0 shadow-sm h-100 rounded-4">
+
+                    <div class="card-body p-4">
+
+                        <div class="display-6 mb-3">
+                            📊
+                        </div>
+
+                        <h4 class="fw-bold mb-3">
+
+                            Analytics Dashboard
+
+                        </h4>
+
+                        <p class="text-muted mb-0">
+
+                            Monitor ticket performance,
+                            resolution rates, and team productivity.
+
+                        </p>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+    <!-- WHY CHOOSE US -->
+    <section class="py-5">
+
+        <div class="card border-0 bg-dark text-light rounded-4 shadow-lg">
+
+            <div class="card-body p-5">
+
+                <div class="row align-items-center">
+
+                    <div class="col-lg-7">
+
+                        <h2 class="fw-bold mb-4">
+
+                            Why Choose Our Platform
+
+                        </h2>
+
+                        <div class="mb-4">
+
+                            <h5 class="fw-bold">
+                                ⚡ Fast Ticket Resolution
+                            </h5>
+
+                            <p class="text-light-emphasis">
+
+                                Reduce response time with efficient
+                                ticket assignment and escalation.
+
+                            </p>
+
+                        </div>
+
+                        <div class="mb-4">
+
+                            <h5 class="fw-bold">
+                                🔒 Security
+                            </h5>
+
+                            <p class="text-light-emphasis">
+
+                                Provides secure authentication
+
+                            </p>
+
+                        </div>
+
+                        <div>
+
+                            <h5 class="fw-bold">
+                                📊  Smart Analytics
+                            </h5>
+
+                            <p class="text-light-emphasis mb-0">
+
+                                Monitor ticket performance and
+                                team productivity in real time.
+                            </p>
+
+                        </div>
+
+                    </div>
+
+                    <div class="col-lg-5 text-center mt-5 mt-lg-0">
+
+                        <div class="display-1">
+                            🚀
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+    <!-- CTA -->
+    <section class="py-5 text-center">
+
+        <h2 class="fw-bold mb-3">
+
+            Ready to Improve Your Support Workflow?
+
+        </h2>
+
+        <p class="text-muted mb-4">
+
+            Start managing customer issues professionally today.
+
+        </p>
+
+        {% if not user.is_authenticated %}
+
+            <a href="{% url 'register' %}"
+            class="btn btn-primary btn-lg px-5">
+
+                Create Free Account
+
+            </a>
+
+        {% else %}
+
+            <a href="{% url 'dashboard' %}"
+            class="btn btn-success btn-lg px-5">
+
+                Go to Dashboard
+
+            </a>
+
+        {% endif %}
+
+    </section>
+
+</div>
+
+{% endblock %}

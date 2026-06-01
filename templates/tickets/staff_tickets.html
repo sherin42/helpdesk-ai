@@ -1,0 +1,268 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div class="d-flex justify-content-between align-items-center mb-4">
+
+    <h2>
+        My Assigned Tickets
+    </h2>
+
+</div>
+
+<!-- FILTER SECTION -->
+<div class="card shadow-sm mb-4">
+
+    <div class="card-body">
+
+        <form method="GET">
+
+            <div class="row g-3">
+
+                <!-- SEARCH -->
+                <div class="col-md-4">
+
+                    <input type="text"
+                           name="search"
+                           class="form-control"
+                           placeholder="Search ticket title"
+                           value="{{ request.GET.search }}">
+
+                </div>
+
+                <!-- STATUS -->
+                <div class="col-md-3">
+
+                    <select name="status"
+                            class="form-select">
+
+                        <option value="">
+                            All Status
+                        </option>
+
+                        <option value="open"
+                        {% if request.GET.status == 'open' %}
+                        selected
+                        {% endif %}
+                        >
+                            Open
+                        </option>
+
+                        <option value="in_progress"
+                        {% if request.GET.status == 'in_progress' %}
+                        selected
+                        {% endif %}
+                        >
+                            In Progress
+                        </option>
+
+                        <option value="resolved"
+                        {% if request.GET.status == 'resolved' %}
+                        selected
+                        {% endif %}
+                        >
+                            Resolved
+                        </option>
+
+                        <option value="escalated"
+                        {% if request.GET.status == 'escalated' %}
+                        selected
+                        {% endif %}
+                        >
+                            Escalated
+                        </option>
+
+                    </select>
+
+                </div>
+
+                <!-- PRIORITY -->
+                <div class="col-md-3">
+
+                    <select name="priority"
+                            class="form-select">
+
+                        <option value="">
+                            All Priority
+                        </option>
+
+                        <option value="low"
+                        {% if request.GET.priority == 'low' %}
+                        selected
+                        {% endif %}
+                        >
+                            Low
+                        </option>
+
+                        <option value="medium"
+                        {% if request.GET.priority == 'medium' %}
+                        selected
+                        {% endif %}
+                        >
+                            Medium
+                        </option>
+
+                        <option value="high"
+                        {% if request.GET.priority == 'high' %}
+                        selected
+                        {% endif %}
+                        >
+                            High
+                        </option>
+
+                    </select>
+
+                </div>
+
+                <!-- BUTTON -->
+                <div class="col-md-2">
+
+                    <button type="submit"
+                            class="btn btn-primary w-100">
+
+                        Filter
+
+                    </button>
+
+                </div>
+
+            </div>
+
+        </form>
+
+    </div>
+
+</div>
+
+<!-- TICKETS -->
+<div class="row">
+
+{% for ticket in tickets %}
+
+    <div class="col-md-6 mb-4">
+
+        <div class="card shadow-sm h-100">
+
+            <div class="card-body">
+
+                <!-- TITLE + STATUS -->
+                <div class="d-flex justify-content-between align-items-start">
+
+                    <h4>
+
+                        {{ ticket.title }}
+
+                    </h4>
+
+                    {% if ticket.status == 'open' %}
+
+                        <span class="badge bg-warning">
+                            Open
+                        </span>
+
+                    {% elif ticket.status == 'in_progress' %}
+
+                        <span class="badge bg-info">
+                            In Progress
+                        </span>
+
+                    {% elif ticket.status == 'resolved' %}
+
+                        <span class="badge bg-success">
+                            Resolved
+                        </span>
+
+                    {% elif ticket.status == 'escalated' %}
+
+                        <span class="badge bg-danger">
+                            Escalated
+                        </span>
+
+                    {% endif %}
+
+                </div>
+
+                <hr>
+
+                <!-- DETAILS -->
+                <p>
+
+                    <strong>Priority:</strong>
+
+                    {% if ticket.priority == 'high' %}
+
+                        <span class="text-danger fw-bold">
+                            High
+                        </span>
+
+                    {% elif ticket.priority == 'medium' %}
+
+                        <span class="text-warning fw-bold">
+                            Medium
+                        </span>
+
+                    {% else %}
+
+                        <span class="text-success fw-bold">
+                            Low
+                        </span>
+
+                    {% endif %}
+
+                </p>
+
+                <p>
+                    <strong>Department:</strong>
+                    {{ ticket.department }}
+                </p>
+
+                <p>
+                    <strong>Created By:</strong>
+                    {{ ticket.created_by.name }}
+                </p>
+
+            </div>
+
+            <!-- ACTION BUTTONS -->
+            <div class="card-footer bg-white">
+
+                <a href="{% url 'ticket_detail' ticket.id %}"
+                   class="btn btn-dark btn-sm">
+
+                    View Details
+
+                </a>
+
+                <a href="{% url 'update_ticket_status' ticket.id %}"
+                   class="btn btn-primary btn-sm">
+
+                    Update Status
+
+                </a>
+
+                <a href="{% url 'escalate_ticket' ticket.id %}"
+                   class="btn btn-danger btn-sm">
+
+                    Escalate
+
+                </a>
+
+            </div>
+
+        </div>
+
+    </div>
+
+{% empty %}
+
+<div class="alert alert-secondary">
+
+    No assigned tickets.
+
+</div>
+
+{% endfor %}
+
+</div>
+
+{% endblock %}

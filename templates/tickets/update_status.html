@@ -1,0 +1,98 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div class="row justify-content-center">
+
+    <div class="col-md-6">
+
+        <!-- BACK BUTTON -->
+        <div class="mb-3">
+
+            <a href="javascript:history.back()"
+               class="btn btn-secondary">
+
+                ← Back
+
+            </a>
+
+        </div>
+
+        <div class="card shadow-sm">
+
+            <div class="card-body">
+
+                <h2 class="text-center mb-4">
+                    Update Ticket Status
+                </h2>
+
+                <!-- TICKET INFO -->
+                <div class="alert alert-secondary">
+
+                    <strong>Ticket:</strong>
+                    {{ ticket.title }}
+
+                </div>
+
+                <!-- FORM -->
+                <form method="post">
+
+                    {% csrf_token %}
+
+                    <div class="mb-4">
+
+                        <label class="form-label">
+
+                            Select Status
+
+                        </label>
+
+                        <select name="status"
+                                class="form-select">
+
+                            <option value="in_progress"
+                            {% if ticket.status == 'in_progress' %}
+                            selected
+                            {% endif %}
+                            >
+                                In Progress
+                            </option>
+
+                            <option value="resolved"
+                            {% if ticket.status == 'resolved' %}
+                            selected
+                            {% endif %}
+                            >
+                                Resolved
+                            </option>
+
+                            <option value="escalated"
+                            {% if ticket.status == 'escalated' %}
+                            selected
+                            {% endif %}
+                            >
+                                Escalated
+                            </option>
+
+                        </select>
+
+                    </div>
+
+                    <button type="submit"
+                            class="btn btn-primary w-100">
+
+                        Update Status
+
+                    </button>
+
+                </form>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+{% endblock %}

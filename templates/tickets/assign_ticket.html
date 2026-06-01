@@ -1,0 +1,98 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div class="row justify-content-center">
+
+    <div class="col-md-6">
+
+        <div class="card shadow-sm">
+
+            <div class="card-body">
+
+                <h2 class="text-center mb-4">
+                    Assign Ticket
+                </h2>
+
+                <!-- TICKET INFO -->
+                <div class="alert alert-secondary">
+
+                    <strong>Ticket:</strong>
+                    {{ ticket.title }}
+
+                </div>
+
+                <div class="alert alert-info">
+
+                    <strong>Current Staff:</strong>
+
+                    {% if ticket.assigned_to %}
+                        {{ ticket.assigned_to.name }}
+                    {% else %}
+                        Not Assigned
+                    {% endif %}
+
+                </div>
+
+                <!-- ASSIGN FORM -->
+                <form method="post">
+
+                    {% csrf_token %}
+
+                    <div class="mb-3">
+
+                        <label class="form-label">
+
+                            Select Staff
+
+                        </label>
+
+                        <select name="staff"
+                                class="form-select">
+
+                            {% for item in staff_data %}
+
+                                <option value="{{ item.staff.id }}"
+                                {% if ticket.assigned_to and ticket.assigned_to.id == item.staff.id %}
+                                selected
+                                {% endif %}
+                                >
+                                    {{ item.staff.name }}
+                                    ({{ item.active_tickets }} active tickets)
+                                </option>
+
+                            {% endfor %}
+
+                        </select>
+
+                    </div>
+
+                    <div class="d-flex justify-content-between">
+
+                        <a href="{% url 'all_tickets' %}"
+                           class="btn btn-secondary">
+
+                            Back
+
+                        </a>
+
+                        <button type="submit"
+                                class="btn btn-primary">
+
+                            Assign Ticket
+
+                        </button>
+
+                    </div>
+
+                </form>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+{% endblock %}

@@ -1,0 +1,384 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<style>
+
+.timeline {
+
+    position: relative;
+
+    margin-left: 20px;
+
+    border-left: 3px solid #dee2e6;
+
+    padding-left: 30px;
+}
+
+.timeline-item {
+
+    position: relative;
+
+    margin-bottom: 30px;
+}
+
+.timeline-dot {
+
+    width: 15px;
+
+    height: 15px;
+
+    background: #0d6efd;
+
+    border-radius: 50%;
+
+    position: absolute;
+
+    left: -39px;
+
+    top: 5px;
+}
+
+.timeline-content {
+
+    background: #f8f9fa;
+
+    padding: 15px;
+
+    border-radius: 10px;
+}
+
+</style>
+
+<div class="mb-3">
+
+    <a href="javascript:history.back()"
+       class="btn btn-secondary">
+
+        ← Back
+
+    </a>
+
+</div>
+
+<!-- TICKET DETAILS -->
+<div class="card shadow-sm mb-4">
+
+    <div class="card-body">
+
+        <div class="d-flex justify-content-between align-items-start flex-wrap">
+
+            <div>
+
+                <h2 class="mb-1">
+
+                    {{ ticket.title }}
+
+                </h2>
+
+                <h6 class="text-muted">
+
+                    Ticket #{{ ticket.id }}
+
+                </h6>
+
+            </div>
+
+            <div>
+
+                {% if ticket.status == 'open' %}
+
+                    <span class="badge bg-warning">
+                        Open
+                    </span>
+
+                {% elif ticket.status == 'in_progress' %}
+
+                    <span class="badge bg-info">
+                        In Progress
+                    </span>
+
+                {% elif ticket.status == 'resolved' %}
+
+                    <span class="badge bg-success">
+                        Resolved
+                    </span>
+
+                {% elif ticket.status == 'escalated' %}
+
+                    <span class="badge bg-danger">
+                        Escalated
+                    </span>
+
+                {% endif %}
+
+            </div>
+
+        </div>
+
+        <hr>
+
+        <!-- SLA STATUS -->
+
+        <div class="mb-4">
+
+            <strong>SLA Status:</strong>
+
+            {% if sla_breached %}
+
+                <span class="badge bg-danger">
+
+                    SLA Breached
+
+                </span>
+
+            {% else %}
+
+                <span class="badge bg-success">
+
+                    {{ remaining_hours }} hours remaining
+
+                </span>
+
+            {% endif %}
+
+        </div>
+
+        <p>
+            <strong>Description:</strong>
+            {{ ticket.description }}
+        </p>
+
+        <p>
+
+            <strong>Priority:</strong>
+
+            {% if ticket.priority == 'high' %}
+
+                <span class="badge bg-danger">
+                    High
+                </span>
+
+            {% elif ticket.priority == 'medium' %}
+
+                <span class="badge bg-warning text-dark">
+                    Medium
+                </span>
+
+            {% else %}
+
+                <span class="badge bg-success">
+                    Low
+                </span>
+
+            {% endif %}
+
+        </p>
+
+        <p>
+            <strong>Department:</strong>
+
+            <span class="badge bg-dark">
+                {{ ticket.department }}
+            </span>
+        </p>
+
+        <p>
+            <strong>Created By:</strong>
+            {{ ticket.created_by.name }}
+        </p>
+
+        <p>
+            <strong>Created On:</strong>
+            {{ ticket.created_at|date:"d M Y, h:i A" }}
+        </p>
+
+        {% if ticket.assigned_to %}
+
+        <p>
+            <strong>Assigned To:</strong>
+            {{ ticket.assigned_to.name }}
+        </p>
+
+        {% endif %}
+
+    </div>
+
+</div>
+
+<!-- ESCALATION -->
+{% if ticket.status == 'escalated' %}
+
+<div class="alert alert-danger mb-4">
+
+    <h5>
+        Escalation Reason
+    </h5>
+
+    <p class="mb-0">
+        {{ ticket.escalation_reason }}
+    </p>
+
+</div>
+
+{% endif %}
+
+<!-- COMMENTS -->
+<div class="card shadow-sm mb-4">
+
+    <div class="card-body">
+
+        <h3 class="mb-4">
+            Comments
+        </h3>
+
+        {% for comment in comments %}
+
+            <div class="border rounded p-3 mb-3">
+
+                <p class="mb-2">
+                    {{ comment.message }}
+                </p>
+
+                <small class="text-muted">
+
+                    By
+
+                    {% if comment.user.name %}
+                        {{ comment.user.name }}
+                    {% else %}
+                        {{ comment.user.username }}
+                    {% endif %}
+
+                    •
+
+                    {{ comment.created_at|date:"d M Y, h:i A" }}
+
+                </small>
+
+            </div>
+
+        {% empty %}
+
+            <div class="alert alert-secondary">
+
+                No comments yet.
+
+            </div>
+
+        {% endfor %}
+
+    </div>
+
+</div>
+
+<!-- HISTORY -->
+<div class="card shadow-sm mb-4">
+
+    <div class="card-body">
+
+        <h3 class="mb-4">
+
+            Ticket Timeline
+
+        </h3>
+
+        <div class="timeline">
+
+            {% for history in ticket.history.all %}
+
+                <div class="timeline-item">
+
+                    <div class="timeline-dot"></div>
+
+                    <div class="timeline-content">
+
+                        <h6 class="mb-1">
+
+                            {{ history.action }}
+
+                        </h6>
+
+                        <p class="mb-1 text-muted small">
+
+                            By
+
+                            {% if history.performed_by %}
+
+                                {% if history.performed_by.name %}
+
+                                    {{ history.performed_by.name }}
+
+                                {% else %}
+
+                                    {{ history.performed_by.username }}
+
+                                {% endif %}
+
+                            {% else %}
+
+                                System
+
+                            {% endif %}
+
+                        </p>
+
+                        <small class="text-muted">
+
+                            {{ history.created_at|date:"d M Y, h:i A" }}
+
+                        </small>
+
+                    </div>
+
+                </div>
+
+            {% empty %}
+
+                <div class="alert alert-secondary">
+
+                    No history available.
+
+                </div>
+
+            {% endfor %}
+
+        </div>
+
+    </div>
+
+</div>
+
+<!-- ADD COMMENT -->
+<div class="card shadow-sm">
+
+    <div class="card-body">
+
+        <h3 class="mb-4">
+            Add Comment
+        </h3>
+
+        <form method="post">
+
+            {% csrf_token %}
+
+            <div class="mb-3">
+
+                {{ form.message }}
+
+            </div>
+
+            <button type="submit"
+                    class="btn btn-primary">
+
+                Add Comment
+
+            </button>
+
+        </form>
+
+    </div>
+
+</div>
+
+{% endblock %}

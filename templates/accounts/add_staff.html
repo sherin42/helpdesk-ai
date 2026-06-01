@@ -1,0 +1,104 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div class="row justify-content-center">
+
+    <div class="col-md-6">
+
+        <div class="card shadow-sm">
+
+            <div class="card-body">
+
+                <!-- TITLE -->
+                <h2 class="mb-4 text-center">
+                    Add Staff
+                </h2>
+
+                <!-- FORM -->
+                <form method="post" autocomplete="off">
+
+                    {% csrf_token %}
+
+                    <!-- FORM FIELDS -->
+
+                    <div class="mb-3">
+
+                        <label class="form-label">
+                            Name
+                        </label>
+
+                        {{ form.name }}
+
+                    </div>
+
+                    <div class="mb-3">
+
+                        <label class="form-label">
+                            Username
+                        </label>
+
+                        {{ form.username }}
+
+                    </div>
+
+                    <div class="mb-3">
+
+                        <label class="form-label">
+                            Email
+                        </label>
+
+                        {{ form.email }}
+
+                    </div>
+
+                    <div class="mb-3">
+
+                        <label class="form-label">
+                            Password
+                        </label>
+
+                        {{ form.password }}
+
+                    </div>
+
+                    <div class="mb-3">
+
+                        <label class="form-label">
+                            Department
+                        </label>
+
+                        {{ form.department }}
+
+                    </div>
+
+                    <!-- BUTTONS -->
+                    <div class="d-flex justify-content-between">
+
+                        <a href="{% url 'dashboard' %}"
+                           class="btn btn-secondary">
+
+                            Back
+
+                        </a>
+
+                        <button type="submit"
+                                class="btn btn-primary">
+
+                            Create Staff
+
+                        </button>
+
+                    </div>
+
+                </form>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+{% endblock %}

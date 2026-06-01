@@ -1,0 +1,34 @@
+text,priority
+
+server down,High
+website crashed,High
+payment failed urgently,High
+database error,High
+system outage,High
+security breach,High
+critical bug found,High
+unable to process payments,High
+vpn not working for all employees,High
+application crash affecting users,High
+
+unable to login,Medium
+email not syncing,Medium
+printer issue,Medium
+software installation problem,Medium
+network slow,Medium
+refund delayed,Medium
+attendance mismatch,Medium
+leave approval pending,Medium
+billing issue,Medium
+invoice missing,Medium
+
+profile update request,Low
+password reset request,Low
+general inquiry,Low
+feature request,Low
+minor ui issue,Low
+employee document update,Low
+account detail correction,Low
+holiday policy question,Low
+small typo issue,Low
+theme color suggestion,Low

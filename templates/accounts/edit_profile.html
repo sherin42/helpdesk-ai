@@ -1,0 +1,84 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div class="row justify-content-center">
+
+    <div class="col-md-6">
+
+        <div class="card shadow-sm">
+
+            <div class="card-body">
+
+                <h2 class="text-center mb-4">
+
+                    Edit Profile
+
+                </h2>
+
+                <form method="post">
+
+                    {% csrf_token %}
+
+                    <div class="mb-3">
+                        <label class="form-label">Name</label>
+                        {{ form.name }}
+                    </div>
+
+                    <div class="mb-3">
+                        <label class="form-label">Email</label>
+                        {{ form.email }}
+                    </div>
+
+                    <div class="mb-3">
+                        <label class="form-label">Username</label>
+                        {{ form.username }}
+                    </div>
+
+                    {% if form.instance.role == 'user' %}
+
+                        <div class="mb-3">
+                            <label class="form-label">Age</label>
+                            {{ form.age }}
+                        </div>
+
+                        <div class="mb-3">
+                            <label class="form-label">Gender</label>
+                            {{ form.gender }}
+                        </div>
+
+                        <div class="mb-3">
+                            <label class="form-label">Location</label>
+                            {{ form.location }}
+                        </div>
+
+                    {% endif %}
+
+                    {% if form.instance.role == 'staff' %}
+
+                        <div class="mb-3">
+                            <label class="form-label">Department</label>
+                            {{ form.department }}
+                        </div>
+
+                    {% endif %}
+
+                    <button
+                        type="submit"
+                        class="btn btn-primary w-100">
+
+                        Save Changes
+
+                    </button>
+
+                </form>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+{% endblock %}

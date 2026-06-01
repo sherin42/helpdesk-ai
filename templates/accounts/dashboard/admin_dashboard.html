@@ -1,0 +1,313 @@
+<div class="container-fluid">
+
+    <!-- HEADER -->
+    <div class="d-flex justify-content-between align-items-center mb-4">
+
+        <div>
+
+            <h2 class="fw-bold mb-1">
+                Admin Analytics Dashboard
+            </h2>
+
+            <p class="text-muted mb-0">
+                Monitor tickets, escalations, staff workload, and system performance
+            </p>
+
+        </div>
+
+        <span class="badge bg-primary px-3 py-2 fs-6">
+            Admin Panel
+        </span>
+
+    </div>
+
+    <!-- KPI CARDS -->
+    <div class="row g-4 mb-4">
+
+        <div class="col-md-6 col-xl-3">
+
+            <div class="card border-0 shadow-sm rounded-4">
+
+                <div class="card-body">
+
+                    <p class="text-muted mb-2">
+                        Total Tickets
+                    </p>
+
+                    <h2 class="fw-bold">
+                        {{ total_tickets }}
+                    </h2>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <div class="col-md-6 col-xl-3">
+
+            <div class="card border-0 shadow-sm rounded-4">
+
+                <div class="card-body">
+
+                    <p class="text-muted mb-2">
+                        Open Tickets
+                    </p>
+
+                    <h2 class="fw-bold text-warning">
+                        {{ open_tickets }}
+                    </h2>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <div class="col-md-6 col-xl-3">
+
+            <div class="card border-0 shadow-sm rounded-4">
+
+                <div class="card-body">
+
+                    <p class="text-muted mb-2">
+                        Resolved Tickets
+                    </p>
+
+                    <h2 class="fw-bold text-success">
+                        {{ resolved_tickets }}
+                    </h2>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <div class="col-md-6 col-xl-3">
+
+            <div class="card border-0 shadow-sm rounded-4">
+
+                <div class="card-body">
+
+                    <p class="text-muted mb-2">
+                        Escalated Tickets
+                    </p>
+
+                    <h2 class="fw-bold text-danger">
+                        {{ escalated_tickets }}
+                    </h2>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <!-- CHARTS -->
+    <div class="row g-4 mb-4">
+
+        <!-- DEPARTMENT -->
+        <div class="col-lg-6">
+
+            <div class="card border-0 shadow-sm rounded-4">
+
+                <div class="card-body">
+
+                    <h5 class="fw-bold mb-4">
+                        Tickets by Department
+                    </h5>
+
+                    <div style="height:300px;">
+
+                        <canvas id="departmentChart"></canvas>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <!-- PRIORITY -->
+        <div class="col-lg-6">
+
+            <div class="card border-0 shadow-sm rounded-4">
+
+                <div class="card-body">
+
+                    <h5 class="fw-bold mb-4">
+                        Priority Distribution
+                    </h5>
+
+                    <div style="height:300px;">
+
+                        <canvas id="priorityChart"></canvas>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <!-- WORKLOAD + ACTIVITIES -->
+    <div class="row g-4">
+
+        <!-- STAFF WORKLOAD -->
+        <div class="col-lg-7">
+
+            <div class="card border-0 shadow-sm rounded-4">
+
+                <div class="card-body">
+
+                    <h5 class="fw-bold mb-4">
+                        Staff Workload
+                    </h5>
+
+                    <div style="height:320px;">
+
+                        <canvas id="workloadChart"></canvas>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <!-- ACTIVITIES -->
+        <div class="col-lg-5">
+
+            <div class="card border-0 shadow-sm rounded-4">
+
+                <div class="card-body">
+
+                    <h5 class="fw-bold mb-4">
+                        Recent Activities
+                    </h5>
+
+                    {% for activity in recent_activities %}
+
+                        <div class="border-start border-4 border-primary ps-3 mb-4">
+
+                            <h6 class="fw-semibold mb-1">
+
+                                {{ activity.action }}
+
+                            </h6>
+
+                            <small class="text-muted">
+
+                                {{ activity.created_at|date:"M d, Y H:i" }}
+
+                            </small>
+
+                        </div>
+
+                    {% endfor %}
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+<script>
+
+new Chart(document.getElementById('departmentChart'), {
+
+    type: 'doughnut',
+
+    data: {
+
+        labels: {{ department_labels|safe }},
+
+        datasets: [{
+
+            data: {{ department_counts|safe }}
+
+        }]
+    },
+
+    options: {
+
+        responsive: true,
+
+        maintainAspectRatio: false
+
+    }
+});
+
+new Chart(document.getElementById('priorityChart'), {
+
+    type: 'pie',
+
+    data: {
+
+        labels: {{ priority_labels|safe }},
+
+        datasets: [{
+
+            data: {{ priority_counts|safe }}
+
+        }]
+    },
+
+    options: {
+
+        responsive: true,
+
+        maintainAspectRatio: false
+
+    }
+});
+
+new Chart(document.getElementById('workloadChart'), {
+
+    type: 'bar',
+
+    data: {
+
+        labels: {{ workload_labels|safe }},
+
+        datasets: [{
+
+            label: 'Assigned Tickets',
+
+            data: {{ workload_counts|safe }}
+
+        }]
+    },
+
+    options: {
+
+        responsive: true,
+
+        maintainAspectRatio: false,
+
+        scales: {
+
+            y: {
+
+                beginAtZero: true
+
+            }
+        }
+    }
+});
+
+</script>

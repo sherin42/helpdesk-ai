@@ -1,0 +1,75 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div class="row justify-content-center">
+
+    <div class="col-md-7">
+
+        <!-- BACK BUTTON -->
+        <div class="mb-3">
+
+            <a href="javascript:history.back()"
+               class="btn btn-secondary">
+
+                ← Back
+
+            </a>
+
+        </div>
+
+        <div class="card shadow-sm border-danger">
+
+            <div class="card-body">
+
+                <h2 class="text-center text-danger mb-4">
+                    Escalate Ticket
+                </h2>
+
+                <!-- TICKET INFO -->
+                <div class="alert alert-secondary">
+
+                    <strong>Ticket:</strong>
+                    {{ ticket.title }}
+
+                </div>
+
+                <!-- FORM -->
+                <form method="POST">
+
+                    {% csrf_token %}
+
+                    <div class="mb-4">
+
+                        <label class="form-label">
+
+                            Reason for Escalation
+
+                        </label>
+
+                        <textarea name="reason"
+                                  rows="5"
+                                  class="form-control"
+                                  placeholder="Explain why this ticket is being escalated..."
+                                  required></textarea>
+
+                    </div>
+
+                    <button type="submit"
+                            class="btn btn-danger w-100">
+
+                        Escalate Ticket
+
+                    </button>
+
+                </form>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+{% endblock %}

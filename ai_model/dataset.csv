@@ -1,0 +1,133 @@
+text,department
+
+login issue,IT
+unable to login,IT
+password reset not working,IT
+website error,IT
+server issue,IT
+internet not working,IT
+application crash,IT
+email not working,IT
+vpn connection failed,IT
+network problem,IT
+system error,IT
+software installation issue,IT
+printer not working,IT
+laptop not starting,IT
+wifi issue,IT
+access denied error,IT
+database connection failed,IT
+system running slow,IT
+unable to access portal,IT
+technical support needed,IT
+website loading issue,IT
+login page not opening,IT
+forgot password problem,IT
+system maintenance issue,IT
+outlook not syncing,IT
+computer freezing issue,IT
+monitor not working,IT
+scanner issue,IT
+authentication failed,IT
+browser compatibility issue,IT
+software update failed,IT
+system configuration issue,IT
+email login problem,IT
+desktop not responding,IT
+application not opening,IT
+it support request,IT
+cloud access problem,IT
+security authentication issue,IT
+portal access denied,IT
+device setup issue,IT
+
+payment failed,Finance
+refund problem,Finance
+invoice missing,Finance
+billing issue,Finance
+bank transfer failed,Finance
+tax issue,Finance
+payment gateway failed,Finance
+expense reimbursement pending,Finance
+duplicate payment issue,Finance
+incorrect invoice amount,Finance
+purchase payment pending,Finance
+budget approval issue,Finance
+finance approval delayed,Finance
+vendor payment failed,Finance
+transaction failed,Finance
+account balance mismatch,Finance
+payment not received,Finance
+refund delayed,Finance
+billing mismatch,Finance
+invoice generation problem,Finance
+bank account update issue,Finance
+gst issue,Finance
+cash transfer failed,Finance
+financial report issue,Finance
+wallet payment failed,Finance
+invoice approval pending,Finance
+credit card payment failed,Finance
+banking transaction issue,Finance
+purchase reimbursement issue,Finance
+finance system issue,Finance
+customer refund pending,Finance
+expense approval delayed,Finance
+vendor invoice issue,Finance
+billing calculation error,Finance
+payment processing issue,Finance
+accounting issue,Finance
+tax calculation problem,Finance
+online payment error,Finance
+invoice upload failed,Finance
+financial dashboard issue,Finance
+
+leave request,HR
+attendance problem,HR
+employee complaint,HR
+leave approval pending,HR
+employee conflict,HR
+recruitment issue,HR
+hiring problem,HR
+staff behavior complaint,HR
+promotion request,HR
+joining process issue,HR
+resignation process delay,HR
+employee verification issue,HR
+holiday policy clarification,HR
+workplace harassment complaint,HR
+shift timing issue,HR
+overtime request,HR
+employee onboarding issue,HR
+training request,HR
+staff management issue,HR
+team conflict,HR
+leave balance issue,HR
+employee document issue,HR
+work allocation complaint,HR
+interview scheduling issue,HR
+staff attendance mismatch,HR
+performance review issue,HR
+employee transfer request,HR
+id card issue,HR
+office policy clarification,HR
+employee profile update request,HR
+salary issue,HR
+salary delayed,HR
+salary not credited,HR
+salary not updated,HR
+payroll complaint,HR
+payroll issue,HR
+payroll processing error,HR
+monthly salary delayed,HR
+employee salary complaint,HR
+salary credit pending,HR
+payslip issue,HR
+incorrect salary amount,HR
+payroll delay,HR
+staff payroll issue,HR
+salary transfer issue,HR
+bonus not credited,HR
+employee benefits issue,HR
+payroll approval pending,HR
+salary slip missing,HR

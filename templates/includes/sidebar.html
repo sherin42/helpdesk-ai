@@ -1,0 +1,193 @@
+<div class="sidebar d-flex flex-column p-3">
+
+    <!-- LOGO -->
+    <div class="mb-4">
+
+        <h4 class="fw-bold text-white text-center">
+
+            HelpDesk AI
+
+        </h4>
+
+    </div>
+
+    <!-- MENU -->
+    <ul class="nav nav-pills flex-column mb-auto">
+
+        <!-- ========================= -->
+        <!-- ADMIN -->
+        <!-- ========================= -->
+
+        {% if request.user.role == 'admin' %}
+
+            <li class="nav-item mb-2">
+
+                <a href="{% url 'dashboard' %}"
+                   class="nav-link text-white">
+
+                    📊 Dashboard
+
+                </a>
+
+            </li>
+
+            <li class="nav-item mb-2">
+
+                <a href="{% url 'all_tickets' %}"
+                   class="nav-link text-white">
+
+                    🎫 All Tickets
+
+                </a>
+
+            </li>
+
+            <li class="nav-item mb-2">
+
+                <a href="{% url 'escalated_tickets' %}"
+                   class="nav-link text-white">
+
+                    🚨 Escalated Tickets
+
+                </a>
+
+            </li>
+
+            <li class="nav-item mb-2">
+
+                <a href="{% url 'department_list' %}"
+                   class="nav-link text-white">
+
+                    🏢 Departments
+
+                </a>
+
+            </li>
+
+            <li class="nav-item mb-2">
+
+                <a href="{% url 'user_list' %}"
+                   class="nav-link text-white">
+
+                    👥 Users
+
+                </a>
+
+            </li>
+
+            <li class="nav-item mb-2">
+
+                <a href="{% url 'add_staff' %}"
+                   class="nav-link text-white">
+
+                    ➕ Add Staff
+
+                </a>
+
+                <a href="{% url 'profile' %}"
+                    class="nav-link text-white">
+                    👤 Profile
+                </a>
+
+            </li>
+
+        {% endif %}
+
+        <!-- ========================= -->
+        <!-- STAFF -->
+        <!-- ========================= -->
+
+        {% if request.user.role == 'staff' %}
+
+            <li class="nav-item mb-2">
+
+                <a href="{% url 'dashboard' %}"
+                   class="nav-link text-white">
+
+                    📊 Dashboard
+
+                </a>
+
+            </li>
+
+            <li class="nav-item mb-2">
+
+                <a href="{% url 'staff_tickets' %}"
+                   class="nav-link text-white">
+
+                    🎫 Assigned Tickets
+
+                </a>
+
+                <a href="{% url 'profile' %}"
+                    class="nav-link text-white">
+                    👤 Profile
+                </a>
+
+            </li>
+
+        {% endif %}
+
+        <!-- ========================= -->
+        <!-- USER -->
+        <!-- ========================= -->
+
+        {% if request.user.role == 'user' %}
+
+            <li class="nav-item mb-2">
+
+                <a href="{% url 'dashboard' %}"
+                   class="nav-link text-white">
+
+                    📊 Dashboard
+
+                </a>
+
+            </li>
+
+            <li class="nav-item mb-2">
+
+                <a href="{% url 'create_ticket' %}"
+                   class="nav-link text-white">
+
+                    ➕ Create Ticket
+
+                </a>
+
+            </li>
+
+            <li class="nav-item mb-2">
+
+                <a href="{% url 'ticket_list' %}"
+                   class="nav-link text-white">
+
+                    🎫 My Tickets
+
+                </a>
+
+                <a href="{% url 'profile' %}"
+                    class="nav-link text-white">
+                    👤 Profile
+                </a>
+
+                
+
+            </li>
+
+        {% endif %}
+
+    </ul>
+
+    <!-- LOGOUT -->
+    <div class="mt-auto">
+
+        <a href="{% url 'logout' %}"
+           class="btn btn-danger w-100">
+
+            Logout
+
+        </a>
+
+    </div>
+
+</div>

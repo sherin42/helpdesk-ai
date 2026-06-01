@@ -1,0 +1,196 @@
+<div class="container-fluid">
+
+    <!-- HEADER -->
+    <div class="d-flex justify-content-between align-items-center mb-4">
+
+        <div>
+
+            <h2 class="fw-bold mb-1">
+                Staff Dashboard
+            </h2>
+
+            <p class="text-muted mb-0">
+                Manage assigned tickets and monitor your workflow
+            </p>
+
+        </div>
+
+        <span class="badge bg-success px-3 py-2 fs-6">
+            Staff Panel
+        </span>
+
+    </div>
+
+    <!-- KPI -->
+    <div class="row g-4 mb-4">
+
+        <div class="col-md-3">
+
+            <div class="card border-0 shadow-sm rounded-4">
+
+                <div class="card-body">
+
+                    <p class="text-muted mb-2">
+                        Assigned Tickets
+                    </p>
+
+                    <h2 class="fw-bold">
+                        {{ total_assigned }}
+                    </h2>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <div class="col-md-3">
+
+            <div class="card border-0 shadow-sm rounded-4">
+
+                <div class="card-body">
+
+                    <p class="text-muted mb-2">
+                        Open
+                    </p>
+
+                    <h2 class="fw-bold text-warning">
+                        {{ open_tickets }}
+                    </h2>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <div class="col-md-3">
+
+            <div class="card border-0 shadow-sm rounded-4">
+
+                <div class="card-body">
+
+                    <p class="text-muted mb-2">
+                        In Progress
+                    </p>
+
+                    <h2 class="fw-bold text-primary">
+                        {{ in_progress_tickets }}
+                    </h2>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <div class="col-md-3">
+
+            <div class="card border-0 shadow-sm rounded-4">
+
+                <div class="card-body">
+
+                    <p class="text-muted mb-2">
+                        Resolved
+                    </p>
+
+                    <h2 class="fw-bold text-success">
+                        {{ resolved_tickets }}
+                    </h2>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <!-- RECENT TICKETS -->
+    <div class="card border-0 shadow-sm rounded-4">
+
+        <div class="card-body">
+
+            <div class="d-flex justify-content-between align-items-center mb-4">
+
+                <h5 class="fw-bold mb-0">
+                    Recent Assigned Tickets
+                </h5>
+
+                <a href="{% url 'staff_tickets' %}"
+                   class="btn btn-primary btn-sm">
+
+                    View All
+
+                </a>
+
+            </div>
+
+            <div class="table-responsive">
+
+                <table class="table align-middle">
+
+                    <thead>
+
+                        <tr>
+
+                            <th>Title</th>
+                            <th>Priority</th>
+                            <th>Status</th>
+                            <th>Department</th>
+
+                        </tr>
+
+                    </thead>
+
+                    <tbody>
+
+                        {% for ticket in recent_tickets %}
+
+                        <tr>
+
+                            <td>
+                                {{ ticket.title }}
+                            </td>
+
+                            <td>
+
+                                <span class="badge bg-warning">
+
+                                    {{ ticket.priority }}
+
+                                </span>
+
+                            </td>
+
+                            <td>
+
+                                <span class="badge bg-primary">
+
+                                    {{ ticket.status }}
+
+                                </span>
+
+                            </td>
+
+                            <td>
+
+                                {{ ticket.department }}
+
+                            </td>
+
+                        </tr>
+
+                        {% endfor %}
+
+                    </tbody>
+
+                </table>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>

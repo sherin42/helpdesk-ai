@@ -1,0 +1,163 @@
+{% extends 'base.html' %}
+
+{% block content_public %}
+
+
+<div class="container py-5">
+
+    <div class="row justify-content-center">
+
+        <div class="col-lg-5 col-md-7">
+
+            <div class="card shadow-lg border-0 rounded-4 p-5">
+
+                <h2 class="text-center mb-4">
+                    Register
+                </h2>
+
+                <form method="post">
+
+                    {% csrf_token %}
+
+                    <!-- NAME -->
+                    <div class="mb-3">
+
+                        <label class="form-label">
+                            Name
+                        </label>
+
+                        {{ form.name }}
+
+                    </div>
+
+                    <!-- AGE -->
+                    <div class="mb-3">
+
+                        <label class="form-label">
+                            Age
+                        </label>
+
+                        {{ form.age }}
+
+                    </div>
+
+                    <!-- GENDER -->
+                    <div class="mb-3">
+
+                        <label class="form-label">
+                            Gender
+                        </label>
+
+                        {{ form.gender }}
+
+                    </div>
+
+                    <!-- USERNAME -->
+                    <div class="mb-3">
+
+                        <label class="form-label">
+                            Username
+                        </label>
+
+                        {{ form.username }}
+
+                        {% if form.username.errors %}
+                            <div class="text-danger small mt-1">
+                                {{ form.username.errors }}
+                            </div>
+                        {% endif %}
+
+                    </div>
+
+                    <!-- EMAIL -->
+                    <div class="mb-3">
+
+                        <label class="form-label">
+                            Email Address
+                        </label>
+
+                        {{ form.email }}
+
+                    </div>
+
+                    <!-- PASSWORD -->
+                    <div class="mb-3">
+
+                        <label class="form-label">
+                            Password
+                        </label>
+
+                        {{ form.password1 }}
+
+                        <div class="form-text">
+                            Your password must contain at least 4 characters.
+                        </div>
+
+                    </div>
+
+                    <!-- CONFIRM PASSWORD -->
+                    <div class="mb-3">
+
+                        <label class="form-label">
+                            Confirm Password
+                        </label>
+
+                        {{ form.password2 }}
+
+                    </div>
+
+                    <!-- LOCATION -->
+                    <div class="mb-4">
+
+                        <label class="form-label">
+                            Location
+                        </label>
+
+                        {{ form.location }}
+
+                    </div>
+
+                    <!-- ERRORS -->
+                    {% if form.errors %}
+
+                    <div class="alert alert-danger rounded-3">
+
+                        Please correct the highlighted errors.
+
+                    </div>
+
+                    {% endif %}
+
+                    <!-- BUTTON -->
+                    <button type="submit"
+                            class="btn btn-primary w-100 py-2 fw-semibold">
+
+                        Register
+
+                    </button>
+
+                </form>
+
+                <div class="text-center mt-4">
+
+                    <p class="mb-0">
+
+                        Already have an account?
+
+                        <a href="{% url 'login' %}">
+                            Login
+                        </a>
+
+                    </p>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+{% endblock %}
