@@ -202,10 +202,10 @@ http://127.0.0.1:8000
 
 Predicts the most suitable department:
 
-- Billing
-- Technical Support
-- Delivery
-- General Support
+- Finance
+- IT
+- HR
+- Support
 
 ### Priority Prediction
 
