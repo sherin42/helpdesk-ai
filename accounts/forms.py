@@ -182,3 +182,32 @@ class ProfileUpdateForm(forms.ModelForm):
             }),
 
         }
+
+class StaffProfileForm(ProfileUpdateForm):
+
+    class Meta(ProfileUpdateForm.Meta):
+
+        model = User
+
+        fields = [
+            'name',
+            'email',
+            'username',
+            'department',
+        ]
+
+
+class UserProfileForm(ProfileUpdateForm):
+
+    class Meta(ProfileUpdateForm.Meta):
+
+        model = User
+
+        fields = [
+            'name',
+            'email',
+            'username',
+            'age',
+            'gender',
+            'location',
+        ]

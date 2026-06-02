@@ -8,7 +8,7 @@ from .forms import RegisterForm, StaffCreationForm
 from tickets.models import Ticket, TicketHistory
 from accounts.models import User
 from .forms import UserEditForm
-from accounts.forms import ProfileUpdateForm
+from accounts.forms import ProfileUpdateForm, StaffProfileForm, UserProfileForm
 
 # HOME PAGE
 def home(request):
@@ -49,15 +49,9 @@ def register(request):
     if request.method == 'POST':
         form = RegisterForm(request.POST)
         if form.is_valid():
-            
             user = form.save()
-
-            user.role = 'admin'
-            user.is_staff = True
-            user.is_superuser = True
-
+            user.role = 'user'
             user.save()
-
             return redirect('login')
         else:
             print(form.errors)
@@ -450,33 +444,13 @@ def profile(request):
 def edit_profile(request):
 
     if request.user.role == 'staff':
-
-        fields = [
-            'name',
-            'email',
-            'username',
-            'department',
-        ]
-
+        FormClass = StaffProfileForm
     else:
-
-        fields = [
-            'name',
-            'email',
-            'username',
-            'age',
-            'gender',
-            'location',
-        ]
-
-    class DynamicProfileForm(ProfileUpdateForm):
-
-        class Meta(ProfileUpdateForm.Meta):
-            field = fields
+        FormClass = UserProfileForm
 
     if request.method == 'POST':
 
-        form = DynamicProfileForm(
+        form = FormClass(
             request.POST,
             instance=request.user
         )
@@ -489,7 +463,7 @@ def edit_profile(request):
 
     else:
 
-        form = DynamicProfileForm(
+        form = FormClass(
             instance=request.user
         )
 
