@@ -1,34 +1,79 @@
 text,priority
 
-server down,High
-website crashed,High
-payment failed urgently,High
-database error,High
-system outage,High
-security breach,High
-critical bug found,High
-unable to process payments,High
-vpn not working for all employees,High
-application crash affecting users,High
+server down affecting all users,High
+production server unavailable,High
+website crashed after deployment,High
+payment gateway not responding,High
+database connection failure,High
+system outage across multiple departments,High
+security breach detected in application,High
+critical bug blocking transactions,High
+unable to process customer payments,High
+vpn inaccessible for all employees,High
+application crash impacting users,High
+login service completely unavailable,High
+customer orders not being processed,High
+data loss reported in production,High
+email server down company wide,High
+network outage in head office,High
+multiple users unable to access system,High
+high cpu usage causing downtime,High
+website returning 500 error,High
+ransomware attack suspected,High
+payment processing delayed for all customers,High
+database server crashed unexpectedly,High
+major authentication failure,High
+erp system unavailable,High
+inventory system down affecting operations,High
 
-unable to login,Medium
-email not syncing,Medium
-printer issue,Medium
-software installation problem,Medium
-network slow,Medium
-refund delayed,Medium
-attendance mismatch,Medium
-leave approval pending,Medium
-billing issue,Medium
-invoice missing,Medium
+email not syncing properly,Medium
+printer not responding in finance department,Medium
+software installation failed on laptop,Medium
+network speed extremely slow,Medium
+refund request pending for several days,Medium
+attendance records mismatch,Medium
+leave request awaiting approval,Medium
+billing discrepancy in invoice,Medium
+customer invoice missing,Medium
+unable to connect to shared drive,Medium
+vpn disconnects frequently,Medium
+application loading very slowly,Medium
+email attachments not downloading,Medium
+scanner not working properly,Medium
+incorrect tax calculation on invoice,Medium
+timesheet approval delayed,Medium
+report generation taking too long,Medium
+customer unable to update payment details,Medium
+employee portal loading slowly,Medium
+intermittent login failures,Medium
+system notifications not received,Medium
+duplicate billing records found,Medium
+project management tool syncing issue,Medium
+software license activation issue,Medium
+printer queue stuck,Medium
 
 profile update request,Low
 password reset request,Low
-general inquiry,Low
-feature request,Low
-minor ui issue,Low
-employee document update,Low
+general inquiry about services,Low
+feature request for dark mode,Low
+minor ui alignment issue,Low
+employee document update request,Low
 account detail correction,Low
-holiday policy question,Low
-small typo issue,Low
-theme color suggestion,Low
+question about holiday policy,Low
+small spelling mistake on homepage,Low
+theme color improvement suggestion,Low
+request for training materials,Low
+need access to user guide,Low
+change contact information,Low
+suggestion for dashboard enhancement,Low
+feedback on user interface design,Low
+request for additional reports,Low
+update employee phone number,Low
+clarification about company policy,Low
+request to rename project,Low
+minor formatting issue in report,Low
+suggestion to improve navigation menu,Low
+question about account settings,Low
+request for profile picture update,Low
+recommendation for future feature,Low
+non urgent cosmetic issue,Low
