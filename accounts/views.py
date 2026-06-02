@@ -49,9 +49,15 @@ def register(request):
     if request.method == 'POST':
         form = RegisterForm(request.POST)
         if form.is_valid():
+            
             user = form.save()
-            user.role = 'user'
+
+            user.role = 'admin'
+            user.is_staff = True
+            user.is_superuser = True
+
             user.save()
+
             return redirect('login')
         else:
             print(form.errors)
