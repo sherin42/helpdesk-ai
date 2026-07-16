@@ -25,6 +25,9 @@ database server crashed unexpectedly,High
 major authentication failure,High
 erp system unavailable,High
 inventory system down affecting operations,High
+payment issue,High
+login issue,High
+
 
 email not syncing properly,Medium
 printer not responding in finance department,Medium
